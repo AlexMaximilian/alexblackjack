@@ -32,6 +32,17 @@ def thedeal(deck):
 print(thedeal(deck))
 print(deck)
 
+def keep_playing():
+    keep = input("Would you like to keep playing Blackjack? (Y/N) : ")
+    if keep == "y" or "Y" or "yes" or "Yes" or "ye" "Ye":
+        dealer_hand = []
+        player_hand = []
+        deck = [2,3,4,5,6,7,8,9,10,11,12,13,14]*4
+        #play game
+    else:
+        print("Thank you for playing at Alex's Blackjack table, your final balance is", str(balance))
+        quit()
+
 
 
 
