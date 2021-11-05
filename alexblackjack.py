@@ -7,6 +7,8 @@ import random
 
 decks = input("Enter number of decks to use: ")
 
+balance = int(input("How much money are you bringing to the table?"))
+
 # user chooses number of decks of cards to use
 deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*(int(decks)*4)
 
@@ -14,7 +16,6 @@ deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*(int(decks)*4)
 wins = 0
 losses = 0
 
-balance = 1000
 
 def deal(deck):
     hand = []
@@ -29,8 +30,9 @@ def deal(deck):
     return hand
 
 def play_again():
+    global balance
     again = input("Do you want to play again? (Y/N) : ").lower()
-    if again == "y":
+    if again == "y" and balance >= 100:
         dealer_hand = []
         player_hand = []
         deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*4
