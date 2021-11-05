@@ -63,6 +63,22 @@ def hit(hand):
     hand.append(card)
     return hand
 
+def clear():
+    if os.name == 'nt':
+        os.system('CLS')
+    if os.name == 'posix':
+        os.system('clear')
+
+def showing_results(dealer_hand, player_hand):
+    clear()
+
+    
+    print("\n    WELCOME TO BLACKJACK!\n")
+    print("-"*30+"\n")
+    print("    \033[1;32;40mWINS:  \033[1;37;40m%s   \033[1;31;40mLOSSES:  \033[1;37;40m%s\n" % (wins, losses))
+    print("-"*30+"\n")
+    print ("The dealer has a " + str(dealer_hand) + " for a total of " + str(totalhand(dealer_hand)))
+    print ("You have a " + str(player_hand) + " for a total of " + str(totalhand(player_hand)))
 
 
 
