@@ -123,5 +123,47 @@ def score(dealer_hand, player_hand):
             print ("Congratulations. Your score is higher than the dealer. You win\n")
             wins += 1
 
+def game():
+    global wins
+    global losses
+    choice = 0
+    clear()
+    print("\n    WELCOME TO BLACKJACK!\n")
+    print("-"*30+"\n")
+    print("    \033[1;32;40mWINS:  \033[1;37;40m%s   \033[1;31;40mLOSSES:  \033[1;37;40m%s\n" % (wins, losses))
+    print("-"*30+"\n")
+    dealer_hand = thedeal(deck)
+    player_hand = thedeal(deck)
+    print ("The dealer is showing a " + str(dealer_hand[0]))
+    print ("You have a " + str(player_hand) + " for a total of " + str(totalhand(player_hand)))
+    blackjack(dealer_hand, player_hand)
+    quit=False
+    while not quit:
+        choice = input("Do you want to [H]it, [S]tand, or [Q]uit: ").lower()
+        if choice == 'h' or 'H' or 'hit' or 'Hit':
+            hit(player_hand)
+            print(player_hand)
+            print("Hand total: " + str(totalhand(player_hand)))
+            if totalhand(player_hand)>21:
+                print('You busted')
+                losses += 1
+                keep_playing()
+        elif choice=='s' or 'S' or 'Stand' 'stand':
+            while totalhand(dealer_hand)<17:
+                hit(dealer_hand)
+                print(dealer_hand)
+                if totalhand(dealer_hand)>21:
+                    print('Dealer busts, you win!')
+                    wins += 1
+                    keep_playing()
+            score(dealer_hand,player_hand)
+            keep_playing()
+        elif choice == "q" or 'quit':
+            print("Bye!")
+            quit=True
+            exit()
 
 
+#Is used to execute some code only if the file was run directly, and not imported.
+if __name__ == "__main__":
+   game()
