@@ -14,6 +14,8 @@ deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*(int(decks)*4)
 wins = 0
 losses = 0
 
+balance = 1000
+
 def deal(deck):
     hand = []
     for i in range(2):
@@ -34,7 +36,7 @@ def play_again():
         deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*4
         game()
     else:
-        print("Bye!")
+        print("Thanks for playing at Alex's Blacjack table your final balance is", balance)
         exit()
 
 def total(hand):
@@ -76,9 +78,11 @@ def print_results(dealer_hand, player_hand):
 def blackjack(dealer_hand, player_hand):
     global wins
     global losses
+    global balance
     if total(player_hand) == 21:
         print_results(dealer_hand, player_hand)
         print ("Congratulations! You got a Blackjack!\n")
+        balance+=100
         wins += 1
         play_again()
     elif total(dealer_hand) == 21:
@@ -91,34 +95,42 @@ def score(dealer_hand, player_hand):
         # score function now updates to global win/loss variables
         global wins
         global losses
+        global balance
         if total(player_hand) == 21:
             print_results(dealer_hand, player_hand)
             print ("Congratulations! You got a Blackjack!\n")
+            balance+=100
             wins += 1
         elif total(dealer_hand) == 21:
             print_results(dealer_hand, player_hand)
             print ("Sorry, you lose. The dealer got a blackjack.\n")
+            balance-=100
             losses += 1
         elif total(player_hand) > 21:
             print_results(dealer_hand, player_hand)
             print ("Sorry. You busted. You lose.\n")
+            balance-=100
             losses += 1
         elif total(dealer_hand) > 21:
             print_results(dealer_hand, player_hand)
             print ("Dealer busts. You win!\n")
+            balance+=100
             wins += 1
         elif total(player_hand) < total(dealer_hand):
             print_results(dealer_hand, player_hand)
             print ("Sorry. Your score isn't higher than the dealer. You lose.\n")
+            balance-=100
             losses += 1
         elif total(player_hand) > total(dealer_hand):
             print_results(dealer_hand, player_hand)
             print ("Congratulations. Your score is higher than the dealer. You win\n")
+            balance+=100
             wins += 1
 
 def game():
     global wins
     global losses
+    global balance
     choice = 0
     clear()
     print("\n    WELCOME TO BLACKJACK!\n")
@@ -139,6 +151,7 @@ def game():
             print("Hand total: " + str(total(player_hand)))
             if total(player_hand)>21:
                 print('You busted')
+                balance-=100
                 losses += 1
                 play_again()
         elif choice=='s':
@@ -147,12 +160,13 @@ def game():
                 print(dealer_hand)
                 if total(dealer_hand)>21:
                     print('Dealer busts, you win!')
+                    balance+=100
                     wins += 1
                     play_again()
             score(dealer_hand,player_hand)
             play_again()
         elif choice == "q":
-            print("Bye!")
+            print("Thanks for playing at Alex's Blacjack table your final balance is", balance)
             quit=True
             exit()
 
