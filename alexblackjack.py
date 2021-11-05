@@ -94,4 +94,34 @@ def blackjack(dealer_hand, player_hand):
         losses += 1
         keep_playing()
 
+def score(dealer_hand, player_hand):
+        #A score function to track wins and losses for each blackjack game event
+        global wins
+        global losses
+        if totalhand(player_hand) == 21:
+            showing_results(dealer_hand, player_hand)
+            print ("Congratulations! You got a Blackjack!\n")
+            wins += 1
+        elif totalhand(dealer_hand) == 21:
+            showing_results(dealer_hand, player_hand)
+            print ("Sorry, you lose. The dealer got a blackjack.\n")
+            losses += 1
+        elif totalhand(player_hand) > 21:
+            showing_results(dealer_hand, player_hand)
+            print ("Unfortunately. You busted. You lose.\n")
+            losses += 1
+        elif totalhand(dealer_hand) > 21:
+            showing_results(dealer_hand, player_hand)
+            print ("Dealer busts. You win!\n")
+            wins += 1
+        elif totalhand(player_hand) < totalhand(dealer_hand):
+            showing_results(dealer_hand, player_hand)
+            print ("Unfortunately. Your score isn't higher than the dealer. You lose.\n")
+            losses += 1
+        elif totalhand(player_hand) > totalhand(dealer_hand):
+            showing_results(dealer_hand, player_hand)
+            print ("Congratulations. Your score is higher than the dealer. You win\n")
+            wins += 1
+
+
 
