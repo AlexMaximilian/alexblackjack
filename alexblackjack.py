@@ -159,7 +159,7 @@ def game():
             score(dealer_hand,player_hand)
             keep_playing()
         elif choice == "q" or 'quit':
-            print("Bye!")
+            print("Thank you for playing at Alex's Blackjack table, your final balance is", str(balance))
             quit=True
             exit()
 
