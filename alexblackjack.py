@@ -7,7 +7,9 @@ import random
 
 decks = input("Enter number of decks to use: ")
 
-balance = int(input("How much money are you bringing to the table? (Minimum of 100€, only in multiples of a 100€"))
+balance = int(input("How much money are you bringing to the table? (Minimum of 100€, only in multiples of a 100€\n"))
+
+multiplier = int(input("How many 100€ chips do you want to bet"))
 
 # user chooses number of decks of cards to use
 deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*(int(decks)*4)
@@ -31,18 +33,20 @@ def deal(deck):
 
 def play_again():
     global balance
+    multiplier = 0
     again = input("Do you want to play again? (Y/N) : ").lower()
     if again == "y":
         dealer_hand = []
         player_hand = []
         deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*4
+        multiplier = int(input("How many 100€ chips do you want to bet"))
         game()
     else:
         if balance < 0:
             print("You are in debt to the casino by", balance, "You must find a way to repay us or else...")
             exit()
         else:
-            print("Thanks for playing at Alex's Blacjack table your final balance is", balance)
+            print("Thanks for playing at Alex's Blackjack table your final balance is", str(balance) + '€')
             exit()
 
 def total(hand):
@@ -85,15 +89,17 @@ def blackjack(dealer_hand, player_hand):
     global wins
     global losses
     global balance
+    global multiplier
     if total(player_hand) == 21:
         print_results(dealer_hand, player_hand)
         print ("Congratulations! You got a Blackjack!\n")
-        balance+=100
+        balance+= 100 * multiplier
         wins += 1
         play_again()
     elif total(dealer_hand) == 21:
         print_results(dealer_hand, player_hand)
         print ("Sorry, you lose. The dealer got a blackjack.\n")
+        balance-= 100 * multiplier
         losses += 1
         play_again()
 
@@ -105,32 +111,32 @@ def score(dealer_hand, player_hand):
         if total(player_hand) == 21:
             print_results(dealer_hand, player_hand)
             print ("Congratulations! You got a Blackjack!\n")
-            balance+=100
+            balance+=100 * multiplier
             wins += 1
         elif total(dealer_hand) == 21:
             print_results(dealer_hand, player_hand)
             print ("Sorry, you lose. The dealer got a blackjack.\n")
-            balance-=100
+            balance-=100 * multiplier
             losses += 1
         elif total(player_hand) > 21:
             print_results(dealer_hand, player_hand)
             print ("Sorry. You busted. You lose.\n")
-            balance-=100
+            balance-=100 * multiplier
             losses += 1
         elif total(dealer_hand) > 21:
             print_results(dealer_hand, player_hand)
             print ("Dealer busts. You win!\n")
-            balance+=100
+            balance+=100 * multiplier
             wins += 1
         elif total(player_hand) < total(dealer_hand):
             print_results(dealer_hand, player_hand)
             print ("Sorry. Your score isn't higher than the dealer. You lose.\n")
-            balance-=100
+            balance-=100 * multiplier
             losses += 1
         elif total(player_hand) > total(dealer_hand):
             print_results(dealer_hand, player_hand)
             print ("Congratulations. Your score is higher than the dealer. You win\n")
-            balance+=100
+            balance+=100 * multiplier
             wins += 1
 
 def game():
@@ -157,7 +163,7 @@ def game():
             print("Hand total: " + str(total(player_hand)))
             if total(player_hand)>21:
                 print('You busted')
-                balance-=100
+                balance-=100 * multiplier
                 losses += 1
                 play_again()
         elif choice=='s':
@@ -166,7 +172,7 @@ def game():
                 print(dealer_hand)
                 if total(dealer_hand)>21:
                     print('Dealer busts, you win!')
-                    balance+=100
+                    balance+=100 * multiplier
                     wins += 1
                     play_again()
             score(dealer_hand,player_hand)
