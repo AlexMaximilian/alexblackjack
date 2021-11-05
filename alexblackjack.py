@@ -32,14 +32,18 @@ def deal(deck):
 def play_again():
     global balance
     again = input("Do you want to play again? (Y/N) : ").lower()
-    if again == "y" and balance >= 100:
+    if again == "y":
         dealer_hand = []
         player_hand = []
         deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*4
         game()
     else:
-        print("Thanks for playing at Alex's Blacjack table your final balance is", balance)
-        exit()
+        if balance < 0:
+            print("You are in debt to the casino by", balance, "You must find a way to repay us or else...")
+            exit()
+        else:
+            print("Thanks for playing at Alex's Blacjack table your final balance is", balance)
+            exit()
 
 def total(hand):
     total = 0
