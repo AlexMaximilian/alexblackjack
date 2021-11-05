@@ -7,7 +7,9 @@ import random
 
 decks = input("Enter number of decks to use: ")
 
-balance = int(input("How much money are you bringing to the table? (Minimum of 100€, only in multiples of a 100€\n"))
+balance = int(input("How much money are you bringing to the table? Minimum of 100€, only in multiples of a 100€\n"))
+
+initbalance = balance
 
 multiplier = int(input("How many 100€ chips do you want to bet"))
 
@@ -46,7 +48,7 @@ def play_again():
             print("You are in debt to the casino by", balance, "You must find a way to repay us or else...")
             exit()
         else:
-            print("Thanks for playing at Alex's Blackjack table your final balance is", str(balance) + '€')
+            print("Thanks for playing at Alex's Blackjack table your final balance is", str(balance) + '€ you started with', str(initbalance) + '€')
             exit()
 
 def total(hand):
@@ -78,10 +80,10 @@ def clear():
 def print_results(dealer_hand, player_hand):
     clear()
 
-    print("\n    WELCOME TO BLACKJACK!\n")
-    print("-"*30+"\n")
+    print("\n    WELCOME TO ALEX'S BLACKJACK!\n")
+    print("-"*35+"\n")
     print("    \033[1;32;40mWINS:  \033[1;37;40m%s   \033[1;31;40mLOSSES:  \033[1;37;40m%s\n" % (wins, losses))
-    print("-"*30+"\n")
+    print("-"*35+"\n")
     print ("The dealer has a " + str(dealer_hand) + " for a total of " + str(total(dealer_hand)))
     print ("You have a " + str(player_hand) + " for a total of " + str(total(player_hand)))
 
@@ -145,10 +147,10 @@ def game():
     global balance
     choice = 0
     clear()
-    print("\n    WELCOME TO BLACKJACK!\n")
-    print("-"*30+"\n")
+    print("\n    WELCOME TO ALEX'S BLACKJACK!\n")
+    print("-"*35+"\n")
     print("    \033[1;32;40mWINS:  \033[1;37;40m%s   \033[1;31;40mLOSSES:  \033[1;37;40m%s\n" % (wins, losses))
-    print("-"*30+"\n")
+    print("-"*35+"\n")
     dealer_hand = deal(deck)
     player_hand = deal(deck)
     print ("The dealer is showing a " + str(dealer_hand[0]))
@@ -178,7 +180,7 @@ def game():
             score(dealer_hand,player_hand)
             play_again()
         elif choice == "q":
-            print("Thanks for playing at Alex's Blackjack table your final balance is", str(balance) + '$')
+            print("Thanks for playing at Alex's Blackjack table your final balance is", str(balance) + '$ you started with', str(initbalance) + '€')
             quit=True
             exit()
 
