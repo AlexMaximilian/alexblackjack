@@ -43,6 +43,19 @@ def keep_playing():
         print("Thank you for playing at Alex's Blackjack table, your final balance is", str(balance))
         quit()
 
+def totalhand(hand):
+    totalhand = 0
+    for card in hand:
+        if card == "J" or card == "Q" or card == "K":
+            totalhand+= 10
+        elif card == "A": #This makes its so that card 14 or the ace is either a 1 or an 11 depending on the totalhand
+            if totalhand >= 11: totalhand+= 1
+            else: totalhand+= 11
+        else: totalhand += card
+    return totalhand
+
+
+
 
 
 
