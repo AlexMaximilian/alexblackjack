@@ -7,9 +7,12 @@ import random
 
 decks = input("Enter number of decks to use: ")
 
-balance = int(input("How much money are you bringing to the table? Minimum of 100€, only in multiples of a 100€\n"))
-
-initbalance = balance
+balance = int(input("How much money are you bringing to the table? (Minimum of 100€, only in multiples of a 100€\n"))
+if balance >= 100:
+    initbalance = balance
+else:
+    print("Please enter a valid input. Number must be greater than a hundred and a multiple of a 100s")
+    exit()
 
 multiplier = int(input("How many 100€ chips do you want to bet"))
 
