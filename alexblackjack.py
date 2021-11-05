@@ -7,7 +7,7 @@ import random
 
 decks = input("Enter number of decks to use: ")
 
-balance = int(input("How much money are you bringing to the table?"))
+balance = int(input("How much money are you bringing to the table? (Minimum of 100€, only in multiples of a 100€"))
 
 # user chooses number of decks of cards to use
 deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]*(int(decks)*4)
@@ -172,7 +172,7 @@ def game():
             score(dealer_hand,player_hand)
             play_again()
         elif choice == "q":
-            print("Thanks for playing at Alex's Blacjack table your final balance is", balance)
+            print("Thanks for playing at Alex's Blackjack table your final balance is", str(balance) + '$')
             quit=True
             exit()
 
