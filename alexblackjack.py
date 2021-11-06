@@ -1,5 +1,5 @@
-#Alex Maximilian github.com/Alexmaximillian
-#Simple Blackjack game inspired by other repos
+#Alex Maximilian github.com/Alexmaximilian
+#Simple Blackjack game enhanced from other repos
 #Enjoy
 
 import os
@@ -65,6 +65,7 @@ def total(hand):
         else: total += card
     return total
 
+#Function to 'hit', take another card from the pile
 def hit(hand):
     card = deck.pop()
     if card == 11:card = "J"
@@ -74,6 +75,7 @@ def hit(hand):
     hand.append(card)
     return hand
 
+#Clearing the console so the game looks cleaner
 def clear():
     if os.name == 'nt':
         os.system('CLS')
@@ -109,7 +111,7 @@ def blackjack(dealer_hand, player_hand):
         play_again()
 
 def score(dealer_hand, player_hand):
-        # score function now updates to global win/loss variables
+        #Score function now updates to global win/loss variables
         global wins
         global losses
         global balance
@@ -144,6 +146,7 @@ def score(dealer_hand, player_hand):
             balance+=100 * multiplier
             wins += 1
 
+#Main game loop
 def game():
     global wins
     global losses
@@ -186,7 +189,6 @@ def game():
             print("Thanks for playing at Alex's Blackjack table your final balance is", str(balance) + '$ you started with', str(initbalance) + '€')
             quit=True
             exit()
-
 
 #Is used to execute some code only if the file was run directly, and not imported.
 if __name__ == "__main__":
