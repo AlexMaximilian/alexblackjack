@@ -22,8 +22,10 @@ Prerequisites:
 - Python
 - A terminal of choice or an IDE such as vscode
 
-1: Install copy paste https://github.com/AlexMaximilian/alexblackjack.git into your terminal of choice
-2: Go into the installed folder with the command 'cd alexblackjack'
-3: Run the command 'python3 alex'
-4: Easy as that enjoy the game!
+Installation and Running Guide:
+
+- Install copy paste https://github.com/AlexMaximilian/alexblackjack.git into your terminal of choice
+- Go into the installed folder with the command 'cd alexblackjack'
+- Run the command 'python3 alex'
+- Easy as that enjoy the game!
 
