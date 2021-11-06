@@ -30,5 +30,10 @@ Installation and Running Guide:
 - Easy as that enjoy the game!
 
 ---
+Contribute:
 
 Feel free to contribute to this game by adding extra features and writing better code. Open a pull request!
+
+Contributors:
+- Michael Herman (reference code)
+
