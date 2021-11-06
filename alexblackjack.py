@@ -83,10 +83,10 @@ def clear():
 def print_results(dealer_hand, player_hand):
     clear()
 
-    print("\n    WELCOME TO ALEX'S BLACKJACK!\n")
+    print("\n \033[1;36;40m WELCOME TO ALEX'S BLACKJACK!\n")
     print("-"*35+"\n")
     print("    \033[1;32;40mWINS:  \033[1;37;40m%s   \033[1;31;40mLOSSES:  \033[1;37;40m%s\n" % (wins, losses))
-    print("-"*35+"\n")
+    print("\033[1;36;40m-"*35+"\n\33")
     print ("The dealer has a " + str(dealer_hand) + " for a total of " + str(total(dealer_hand)))
     print ("You have a " + str(player_hand) + " for a total of " + str(total(player_hand)))
 
@@ -150,10 +150,10 @@ def game():
     global balance
     choice = 0
     clear()
-    print("\n    WELCOME TO ALEX'S BLACKJACK!\n")
+    print("\n \033[1;36;40m WELCOME TO ALEX'S BLACKJACK!\n")
     print("-"*35+"\n")
     print("    \033[1;32;40mWINS:  \033[1;37;40m%s   \033[1;31;40mLOSSES:  \033[1;37;40m%s\n" % (wins, losses))
-    print("-"*35+"\n")
+    print("\033[1;36;40m-"*35+"\n\33")
     dealer_hand = deal(deck)
     player_hand = deal(deck)
     print ("The dealer is showing a " + str(dealer_hand[0]))
