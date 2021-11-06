@@ -29,3 +29,6 @@ Installation and Running Guide:
 - Run the command 'python3 alex'
 - Easy as that enjoy the game!
 
+---
+
+Feel free to contribute to this game by adding extra features and writing better code. Open a pull request!
